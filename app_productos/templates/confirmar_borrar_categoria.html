@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block titulo %}Eliminar Categoría | Mi Tienda{% endblock %}
+
+{% block contenido %}
+<h2>¿Estás seguro de que quieres borrar "{{ categoria.nombre }}"?</h2>
+<p>Esta acción no se puede deshacer. Los productos existentes en esta categoría quedarán "Sin categoría" (debido a la configuración `on_delete=models.SET_NULL`).</p>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="actions">
+        <button type="submit" class="btn btn-danger">Sí, Borrar</button>
+        <a href="{% url 'app_productos:listar_categorias' %}" class="btn">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

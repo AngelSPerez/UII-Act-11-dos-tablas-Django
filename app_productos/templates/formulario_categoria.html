@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block titulo %}{{ titulo }} | Mi Tienda{% endblock %}
+
+{% block contenido %}
+<h2>{{ titulo }}</h2>
+{# Las categorías no suben archivos, así que quitamos enctype #}
+<form method="post" class="form-styled">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <div class="actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        {# El botón cancelar ahora apunta a la lista de categorías #}
+        <a href="{% url 'app_productos:listar_categorias' %}" class="btn">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

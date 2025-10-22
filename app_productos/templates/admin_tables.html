@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block titulo %}Panel de Administración | Mi Tienda{% endblock %}
+
+{% block contenido %}
+<div class="page-header">
+    <h2>Panel de Administración</h2>
+</div>
+
+<p>Selecciona qué sección de la tienda te gustaría administrar:</p>
+
+{# Reutilizamos el estilo de 'product-grid' para un menú de tarjetas #}
+<ul class="product-grid" style="--cols: 2;">
+    
+    {# Tarjeta para Administrar Productos #}
+    <li class="product-card">
+        <a href="{% url 'app_productos:listar_productos' %}" style="text-decoration: none; color: inherit;">
+            <div class="product-placeholder" style="font-size: 3rem;">📋</div>
+            <h3>Administrar Productos</h3>
+            <p>Ver, crear, editar y borrar productos de la tienda.</p>
+        </a>
+    </li>
+
+    {# Tarjeta para Administrar Categorías #}
+    <li class="product-card">
+        <a href="{% url 'app_productos:listar_categorias' %}" style="text-decoration: none; color: inherit;">
+            <div class="product-placeholder" style="font-size: 3rem;">🏷️</div>
+            <h3>Administrar Categorías</h3>
+            <p>Organizar los productos en diferentes categorías.</p>
+        </a>
+    </li>
+    
+</ul>
+{% endblock %}

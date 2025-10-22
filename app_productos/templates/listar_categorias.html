@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block titulo %}Categorías | Mi Tienda{% endblock %}
+
+{% block contenido %}
+<div class="page-header">
+    <h2>Categorías Registradas</h2>
+    <a href="{% url 'app_productos:crear_categoria' %}" class="btn btn-primary">+ Agregar Categoría</a>
+</div>
+
+{# Usaremos una lista simple para las categorías #}
+<ul class="product-grid" style="--cols: 2;">
+    {% for categoria in categorias %}
+    <li class="product-card">
+        <a href="{% url 'app_productos:editar_categoria' categoria.id %}" style="text-decoration: none; color: inherit;">
+            <div class="product-placeholder" style="font-size: 3rem;">🏷️</div>
+            <h3>{{ categoria.nombre }}</h3>
+            <p>{{ categoria.descripcion|default:"Sin descripción" }}</p>
+        </a>
+        <div class="actions" style="border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1rem;">
+            <a href="{% url 'app_productos:editar_categoria' categoria.id %}" class="btn btn-secondary">✏️ Editar</a>
+            <a href="{% url 'app_productos:borrar_categoria' categoria.id %}" class="btn btn-danger">🗑️ Borrar</a>
+        </div>
+    </li>
+    {% empty %}
+    <li class="no-products">No hay categorías registradas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

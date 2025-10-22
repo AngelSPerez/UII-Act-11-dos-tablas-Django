@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block titulo %}{{ producto.nombre }} | Mi Tienda{% endblock %}
+
+{% block contenido %}
+<article class="product-detail">
+    <div class="product-banner">
+        
+        {% if producto.foto_prod %}
+            <img src="{{ producto.foto_prod.url }}" alt="Foto de {{ producto.nombre }}" class="detail-photo">
+        {% else %}
+            <div class="detail-placeholder">📦</div>
+        {% endif %}
+        
+        <div class="product-info">
+            <h1>{{ producto.nombre }}</h1>
+            
+            <h3>$ {{ producto.precio_venta }}</h3>
+            {% if producto.categoria %}
+                <span class="product-category-badge">{{ producto.categoria.nombre }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'app_productos:editar_producto' producto.id %}" class="btn btn-secondary">✏️ Editar</a>
+        <a href="{% url 'app_productos:borrar_producto' producto.id %}" class="btn btn-danger">🗑️ Borrar</a>
+    </div>
+
+    <section class="product-description-section">
+        <h2>Detalles del Producto</h2>
+        
+        <p class="product-description">{{ producto.descripcion }}</p>
+        
+        <ul class="product-specs">
+            <li><strong>Stock disponible:</strong> {{ producto.stock }}</li>
+        </ul>
+        
+    </section>
+</article>
+{% endblock %}

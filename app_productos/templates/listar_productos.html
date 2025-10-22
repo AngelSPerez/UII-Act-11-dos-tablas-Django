@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block titulo %}Productos | Mi Tienda{% endblock %}
+
+{% block contenido %}
+<div class="page-header">
+    <h2>Productos Registrados</h2>
+    <a href="{% url 'app_productos:crear_producto' %}" class="btn btn-primary">+ Agregar Producto</a>
+</div>
+
+<ul class="product-grid">
+    {% for producto in productos %}
+    <li class="product-card">
+        <a href="{% url 'app_productos:detalle_producto' producto.id %}">
+            
+            {% if producto.foto_prod %}
+                <img src="{{ producto.foto_prod.url }}" alt="Foto de {{ producto.nombre }}" class="product-img" width="180px" style="border-radius: 15px;">
+            {% else %}
+                <div class="product-placeholder">📦</div>
+            {% endif %}
+            
+            <h3>{{ producto.nombre }}</h3>
+            
+            <p class="product-price">$ {{ producto.precio_venta }}</p>
+            {% if producto.categoria %}
+              <p class="product-category">{{ producto.categoria.nombre }}</p>
+            {% endif %}
+        </a>
+    </li>
+    {% empty %}
+    <li class="no-products">No hay productos registrados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
