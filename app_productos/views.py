@@ -120,3 +120,11 @@ def admin_tables(request):
     Vista para mostrar el panel de administración de tablas.
     """
     return render(request, 'admin_tables.html')
+
+def detalle_categoria(request, categoria_id):
+    """
+    Vista para ver el detalle (Read) de una sola categoría.
+    """
+    categoria = get_object_or_404(Categorias, id=categoria_id)
+    # Renderiza el nuevo template que acabamos de crear
+    return render(request, 'detalle_categoria.html', {'categoria': categoria})

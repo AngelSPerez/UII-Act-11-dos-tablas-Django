@@ -14,9 +14,17 @@ urlpatterns = [
     path('editar/<int:producto_id>/', views.editar_producto, name='editar_producto'),
     path('borrar/<int:producto_id>/', views.borrar_producto, name='borrar_producto'),
 
-    # --- Rutas de Categorías ---
+# --- Rutas de Categorías ---
     path('categorias/', views.listar_categorias, name='listar_categorias'),
+    
+    # --- AÑADE ESTA LÍNEA ---
+    path('categorias/<int:categoria_id>/', views.detalle_categoria, name='detalle_categoria'),
+    # -------------------------
+    
     path('categorias/crear/', views.crear_categoria, name='crear_categoria'),
     path('categorias/editar/<int:categoria_id>/', views.editar_categoria, name='editar_categoria'),
     path('categorias/borrar/<int:categoria_id>/', views.borrar_categoria, name='borrar_categoria'),
+
+
+ 
 ]

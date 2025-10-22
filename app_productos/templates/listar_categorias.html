@@ -11,7 +11,7 @@
 <ul class="product-grid" style="--cols: 2;">
     {% for categoria in categorias %}
     <li class="product-card">
-        <a href="{% url 'app_productos:editar_categoria' categoria.id %}" style="text-decoration: none; color: inherit;">
+        <a href="{% url 'app_productos:detalle_categoria' categoria.id %}" style="text-decoration: none; color: inherit;">
             <div class="product-placeholder" style="font-size: 3rem;">🏷️</div>
             <h3>{{ categoria.nombre }}</h3>
             <p>{{ categoria.descripcion|default:"Sin descripción" }}</p>
